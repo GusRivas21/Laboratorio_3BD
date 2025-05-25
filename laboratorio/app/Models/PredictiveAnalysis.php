@@ -12,6 +12,6 @@ class PredictiveAnalysis extends Model
         'historical_data',
         'climatic_conditions',
         'market_variables',
-        'recommendations',
+        'recommendations'
     ];
 }

@@ -15,7 +15,7 @@ class SupplyManagement extends Model
         'application_date',
         'quantity_used',
         'observed_effectiveness',
-        'crop_id',
+        'crop_id'
     ];
 
     public function crop() : BelongsTo

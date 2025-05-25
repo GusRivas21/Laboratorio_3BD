@@ -15,7 +15,7 @@ class IrrigationSystem extends Model
         'weatther_prediction',
         'specific_needs',
         'crop_id',
-        'sensor_id',
+        'sensor_id'
     ];
 
     public function crop() : BelongsTo

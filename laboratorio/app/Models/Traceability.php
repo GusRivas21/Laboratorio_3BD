@@ -11,7 +11,7 @@ class Traceability extends Model
 
     protected $fillable = [
         'processes',
-        'crop_id',
+        'crop_id'
     ];
 
     public function crop() : BelongsTo

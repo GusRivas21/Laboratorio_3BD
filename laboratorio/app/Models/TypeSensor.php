@@ -10,7 +10,7 @@ class TypeSensor extends Model
 
     protected $fillable = [
         'sensor_type',
-        'sensor_model',
+        'brand'
     ];
 
 }

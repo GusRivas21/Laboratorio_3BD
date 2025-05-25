@@ -15,7 +15,7 @@ class AssignedTask extends Model
         'task_status',
         'end_date',
         'worker_id',
-        'crop_id',
+        'crop_id'
     ];
 
     public function worker() : BelongsTo

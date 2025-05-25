@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('traceabilities', function (Blueprint $table) {
             $table->id();
             $table->text('processes'); // procesos relacionados con el cultivo
-            $table->foreignId('crop_id')->constrained('crops')->onDelete('cascade'); // Cultivo relacionado
+            $table->foreignId('crop_id')->constrained('crops')->onDelete('cascade');
             $table->timestamps();
         });
     }
