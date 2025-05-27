@@ -53,7 +53,7 @@ class StorePropertyRequest extends FormRequest
             ],
             'farmer_id' => [
                 'required',
-                'exists:farmers,_id',
+                'exists:farmers,id',
             ],
         ];
     }

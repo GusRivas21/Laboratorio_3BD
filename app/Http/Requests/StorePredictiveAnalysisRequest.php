@@ -43,7 +43,7 @@ class StorePredictiveAnalysisRequest extends FormRequest
                 'max:255'
             ],
             'crop_id' => [
-                'exists:crop,id'
+                'exists:crops,id'
             ]
         ];
     }
