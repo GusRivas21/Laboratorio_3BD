@@ -9,6 +9,7 @@ use App\Http\Controllers\PredictiveAnalysisApiController;
 use App\Http\Controllers\TraceabilityApiController;
 use App\Http\Controllers\SupplyManagementApiController;
 use App\Http\Controllers\WorkerApiController;
+use App\Http\Controllers\AssignedTaskApiController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -21,3 +22,5 @@ Route::apiResource('traceabilities', TraceabilityApiController::class);
 Route::apiResource('predictiveAnalyses', PredictiveAnalysisApiController::class);
 Route::apiResource('supplyManagements', SupplyManagementApiController::class);
 Route::apiResource('workers', WorkerApiController::class);
+Route::apiResource('assignedTasks', AssignedTaskApiController::class);
+
