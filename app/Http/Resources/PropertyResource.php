@@ -16,6 +16,7 @@ class PropertyResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'geographic_location' => $this->geographic_location,
             'total_area' => $this->total_area,
             'soil_type' => $this->soil_type,
