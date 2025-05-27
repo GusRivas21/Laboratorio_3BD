@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use MongoDB\Laravel\Relations\BelongsTo;
 use MongoDB\Laravel\Eloquent\Model;
+use App\Models\Crop;
 
 class PredictiveAnalysis extends Model
 {
@@ -12,6 +14,12 @@ class PredictiveAnalysis extends Model
         'historical_data',
         'climatic_conditions',
         'market_variables',
-        'recommendations'
+        'recommendations',
+        'crop_id'
     ];
+
+    public function crop():BelongsTo
+    {
+        return $this->belongsTo(Crop::class, 'crop_id');
+    }
 }

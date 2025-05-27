@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FarmerApiController;
 use App\Http\Controllers\PropertyApiController;
 use App\Http\Controllers\CropApiController;
+use App\Http\Controllers\PredictiveAnalysisApiController;
 use App\Http\Controllers\TraceabilityApiController;
-
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -16,3 +16,4 @@ Route::apiResource('farmers', FarmerApiController::class);
 Route::apiResource('properties', PropertyApiController::class);
 Route::apiResource('crops', CropApiController::class);
 Route::apiResource('traceabilities', TraceabilityApiController::class);
+Route::apiResource('predictiveAnalyses', PredictiveAnalysisApiController::class);
