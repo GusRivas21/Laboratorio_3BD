@@ -7,6 +7,7 @@ use App\Models\Crop;
 use Illuminate\Http\Request;
 use App\Http\Resources\CropResource;
 use Illuminate\Http\Response;
+use App\Http\Requests\UpdateCropRequest;
 
 class CropApiController extends Controller
 {
@@ -43,9 +44,13 @@ class CropApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Crop $crop)
+    public function update(UpdateCropRequest $request, Crop $crop)
     {
-        //
+                $crop->update($request->validated());
+
+        return (new CropResource($crop))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
