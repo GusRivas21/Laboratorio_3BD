@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('climatic_conditions'); // condiciones climáticas
             $table->string('market_variables'); // variables del mercado
             $table->text('recommendations')->nullable(); // recomendaciones u observaciones
+            $table->foreignId('crop_id')->constrained('crops')->onDelete('cascade'); // referencia a la tabla de cultivos
             $table->timestamps();
         });
     }
