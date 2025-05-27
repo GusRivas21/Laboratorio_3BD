@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use MongoDB\Laravel\Relations\HasMany;
 use MongoDB\Laravel\Eloquent\Model;
 use MongoDB\Laravel\Relations\BelongsTo;
 
@@ -26,8 +25,4 @@ class Crop extends Model
         return $this->belongsTo(Property::class);
     }
 
-    public function predictiveAnalyses():HasMany
-    {
-        return $this->hasMany(PredictiveAnalysis::class, 'crop_id');
-    }
 }
