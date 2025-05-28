@@ -20,7 +20,7 @@ class CropApiController extends Controller
         ->response()
         ->setStatusCode(Response::HTTP_OK);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -58,6 +58,8 @@ class CropApiController extends Controller
      */
     public function destroy(Crop $crop)
     {
-        //
+        $crop->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

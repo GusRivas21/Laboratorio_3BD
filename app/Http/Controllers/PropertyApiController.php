@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePropertyRequest;
+use App\Http\Requests\UpdatePropertyRequest;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Http\Resources\PropertyResource;
@@ -44,9 +45,13 @@ class PropertyApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Property $property)
+    public function update(UpdatePropertyRequest $request, Property $property)
     {
-        //
+        $property->update($request->validated());
+
+        return (new PropertyResource($property))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -54,6 +59,8 @@ class PropertyApiController extends Controller
      */
     public function destroy(Property $property)
     {
-        //
+        $property->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

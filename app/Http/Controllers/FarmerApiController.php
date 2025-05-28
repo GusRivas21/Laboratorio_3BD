@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFarmerRequest;
+use App\Http\Requests\UpdateFarmerRequest;
 use App\Models\Farmer;
 use Illuminate\Http\Request;
 use App\Http\Resources\FarmerResource;
@@ -46,9 +47,13 @@ class FarmerApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Farmer $farmer)
+    public function update(UpdateFarmerRequest $request, Farmer $farmer)
     {
-        //
+        $farmer->update($request->validated());
+
+        return (new FarmerResource($farmer))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -56,6 +61,9 @@ class FarmerApiController extends Controller
      */
     public function destroy(Farmer $farmer)
     {
-        //
+        $farmer->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+
     }
 }

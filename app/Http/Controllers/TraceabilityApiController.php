@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTraceabilityRequest;
+use App\Http\Requests\UpdateTraceabilityRequest;
 use App\Models\Traceability;
 use Illuminate\Http\Request;
 use App\Http\Resources\TraceabilityResource;
@@ -43,9 +44,13 @@ class TraceabilityApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Traceability $traceability)
+    public function update(UpdateTraceabilityRequest $request, Traceability $traceability)
     {
-        //
+        $traceability->update($request->validated());
+
+        return (new TraceabilityResource($traceability))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -53,6 +58,8 @@ class TraceabilityApiController extends Controller
      */
     public function destroy(Traceability $traceability)
     {
-        //
+        $traceability->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
