@@ -16,7 +16,7 @@ class TraceabilityApiController extends Controller
      */
     public function index()
     {
-        return (TraceabilityResource::collection(Traceability::with('property')->paginate(4)))
+        return (TraceabilityResource::collection(Traceability::with('crop')->paginate(4)))
         ->response()
         ->setStatusCode(Response::HTTP_OK);
     }
