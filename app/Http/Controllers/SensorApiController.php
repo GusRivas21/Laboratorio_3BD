@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCropRequest;
-use App\Http\Requests\UpdateCropRequest;
-use App\Models\Crop;
+use App\Http\Requests\StoreSensorRequest;
+use App\Http\Requests\UpdateSensorRequest;
+use App\Models\Sensor;
 use Illuminate\Http\Request;
-use App\Http\Resources\CropResource;
-use App\Http\Resources\PropertyResource;
+use App\Http\Resources\SensorResource;
 use Illuminate\Http\Response;
-use App\Http\Requests\UpdateCropRequest;
 
-class CropApiController extends Controller
+class SensorApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return (CropResource::collection(Crop::with('property')->paginate(4)))
+        return (SensorResource::collection(Sensor::with('property', 'typeSensor')->paginate(4)))
         ->response()
         ->setStatusCode(Response::HTTP_OK);
     }
@@ -26,11 +24,11 @@ class CropApiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCropRequest $request)
+    public function store(StoreSensorRequest $request)
     {
-        $crop = Crop::create($request->validated());
+        $sensor = Sensor::create($request->validated());
 
-        return (new CropResource($crop))
+        return (new SensorResource($sensor))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
     }
@@ -38,7 +36,7 @@ class CropApiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Crop $crop)
+    public function show(Sensor $sensor)
     {
         //
     }
@@ -46,11 +44,11 @@ class CropApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCropRequest $request, Crop $crop)
+    public function update(UpdateSensorRequest $request, Sensor $sensor)
     {
-        $crop->update($request->validated());
+        $sensor->update($request->validated());
 
-        return (new PropertyResource($crop))
+        return (new SensorResource($sensor))
             ->response()
             ->setStatusCode(Response::HTTP_OK);
     }
@@ -58,9 +56,9 @@ class CropApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Crop $crop)
+    public function destroy(Sensor $sensor)
     {
-        $crop->delete();
+        $sensor->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

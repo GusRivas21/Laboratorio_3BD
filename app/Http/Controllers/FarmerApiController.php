@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Resources\FarmerResource;
 use Illuminate\Http\Response;
 
-
 class FarmerApiController extends Controller
 {
     /**
@@ -21,7 +20,7 @@ class FarmerApiController extends Controller
 
         return response()->json([
             'farmers' => $farmers
-        ]); 
+        ]);
     }
 
     /**
@@ -61,9 +60,10 @@ class FarmerApiController extends Controller
      */
     public function destroy(Farmer $farmer)
     {
+
         $farmer->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-
+    
     }
 }

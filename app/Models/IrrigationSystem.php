@@ -12,7 +12,7 @@ class IrrigationSystem extends Model
     protected $fillable = [
         'start_date',
         'end_date',
-        'weatther_prediction',
+        'weather_prediction',
         'specific_needs',
         'crop_id',
         'sensor_id'
