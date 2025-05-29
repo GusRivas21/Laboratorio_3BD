@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSensorRequest;
+use App\Http\Requests\UpdateSensorRequest;
 use App\Models\Sensor;
 use Illuminate\Http\Request;
 use App\Http\Resources\SensorResource;
@@ -15,7 +16,7 @@ class SensorApiController extends Controller
      */
     public function index()
     {
-        return (SensorResource::collection(Sensor::with('property', '')->paginate(4)))
+        return (SensorResource::collection(Sensor::with('property', 'typeSensor')->paginate(4)))
         ->response()
         ->setStatusCode(Response::HTTP_OK);
     }
@@ -43,9 +44,13 @@ class SensorApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sensor $sensor)
+    public function update(UpdateSensorRequest $request, Sensor $sensor)
     {
-        //
+        $sensor->update($request->validated());
+
+        return (new SensorResource($sensor))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -53,6 +58,8 @@ class SensorApiController extends Controller
      */
     public function destroy(Sensor $sensor)
     {
-        //
+        $sensor->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

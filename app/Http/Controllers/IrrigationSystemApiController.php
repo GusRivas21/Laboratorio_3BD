@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIrrigationSystemRequest;
+use App\Http\Requests\UpdateIrrigationSystemRequest;
 use App\Models\IrrigationSystem;
 use Illuminate\Http\Request;
 use App\Http\Resources\IrrigationSystemResource;
@@ -43,9 +44,13 @@ class IrrigationSystemApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, IrrigationSystem $irrigationSystem)
+    public function update(UpdateIrrigationSystemRequest $request, IrrigationSystem $irrigationSystem)
     {
-        //
+        $irrigationSystem->update($request->validated());
+
+        return (new IrrigationSystemResource($irrigationSystem))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -53,6 +58,10 @@ class IrrigationSystemApiController extends Controller
      */
     public function destroy(IrrigationSystem $irrigationSystem)
     {
-        //
+    {
+        $irrigationSystem->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
     }
 }

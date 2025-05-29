@@ -12,5 +12,4 @@ class TypeSensor extends Model
         'sensor_type',
         'brand'
     ];
-
 }

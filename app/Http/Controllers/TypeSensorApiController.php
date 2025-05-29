@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTypeSensorRequest;
+use App\Http\Requests\UpdateTypeSensorRequest;
 use App\Models\TypeSensor;
 use Illuminate\Http\Request;
 use App\Http\Resources\TypeSensorResource;
@@ -15,9 +16,11 @@ class TypeSensorApiController extends Controller
      */
     public function index()
     {
-        return (TypeSensorResource::collection(TypeSensor::all()))
-            ->response()
-            ->setStatusCode(Response::HTTP_OK);
+       $typeSensor = TypeSensorResource::collection(TypeSensor::all());
+
+        return response()->json([
+            'typeSensors' => $typeSensor
+        ]); 
     }
 
     /**
@@ -25,7 +28,7 @@ class TypeSensorApiController extends Controller
      */
     public function store(StoreTypeSensorRequest $request)
     {
-        $typeSensor = TypeSensor::create($request->validated());
+        $typeSensor = TypeSensor::query()->create($request->validated());
 
         return (new TypeSensorResource($typeSensor))
             ->response()
@@ -43,9 +46,13 @@ class TypeSensorApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TypeSensor $typeSensor)
+    public function update(UpdateTypeSensorRequest $request, TypeSensor $typeSensor)
     {
-        //
+        $typeSensor->update($request->validated());
+
+        return (new TypeSensorResource($typeSensor))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -53,6 +60,8 @@ class TypeSensorApiController extends Controller
      */
     public function destroy(TypeSensor $typeSensor)
     {
-        //
+        $typeSensor->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

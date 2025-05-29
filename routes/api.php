@@ -19,5 +19,5 @@ Route::apiResource('properties', PropertyApiController::class);
 Route::apiResource('crops', CropApiController::class);
 Route::apiResource('traceabilities', TraceabilityApiController::class);
 Route::apiResource('irrigationSystems', IrrigationSystemApiController::class);
-Route::apiResource('typesSensors', TypeSensorApiController::class);
+Route::apiResource('typeSensors', TypeSensorApiController::class);
 Route::apiResource('sensors', SensorApiController::class);
