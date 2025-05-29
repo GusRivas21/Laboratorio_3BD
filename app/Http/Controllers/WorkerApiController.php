@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCropRequest;
-use App\Http\Requests\UpdateCropRequest;
-use App\Models\Crop;
+use App\Http\Requests\StoreWorkerRequest;
+use App\Http\Requests\UpdateWorkerRequest;
+use App\Models\Worker;
 use Illuminate\Http\Request;
-use App\Http\Resources\CropResource;
-use App\Http\Resources\PropertyResource;
+use App\Http\Resources\WorkerResource;
 use Illuminate\Http\Response;
 
-class CropApiController extends Controller
+class WorkerApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return (CropResource::collection(Crop::with('property')->paginate(4)))
+        return (WorkerResource::collection(Worker::all()))
         ->response()
         ->setStatusCode(Response::HTTP_OK);
     }
@@ -25,19 +24,20 @@ class CropApiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCropRequest $request)
+    public function store(StoreWorkerRequest $request)
     {
-        $crop = Crop::create($request->validated());
+        $worker = Worker::query()->create($request->validated());
 
-        return (new CropResource($crop))
+        return (new WorkerResource($worker))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Crop $crop)
+    public function show(Worker $worker)
     {
         //
     }
@@ -45,11 +45,11 @@ class CropApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCropRequest $request, Crop $crop)
+    public function update(UpdateWorkerRequest $request, Worker $worker)
     {
-        $crop->update($request->validated());
+        $worker->update($request->validated());
 
-        return (new PropertyResource($crop))
+        return (new WorkerResource($worker))
             ->response()
             ->setStatusCode(Response::HTTP_OK);
     }
@@ -57,12 +57,12 @@ class CropApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Crop $crop)
+    public function destroy(Worker $worker)
     {
-
-        $crop->delete();
+    {
+        $worker->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
-
+    }
 }

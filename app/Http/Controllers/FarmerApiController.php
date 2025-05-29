@@ -64,6 +64,6 @@ class FarmerApiController extends Controller
         $farmer->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-    
     }
+
 }
