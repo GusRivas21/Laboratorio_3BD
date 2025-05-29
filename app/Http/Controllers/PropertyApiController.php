@@ -8,8 +8,9 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Http\Resources\PropertyResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
 
-//controlador for properties
+#[Group('Property')]
 class PropertyApiController extends Controller
 {
     /**

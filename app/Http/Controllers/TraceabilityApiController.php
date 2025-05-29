@@ -8,11 +8,16 @@ use App\Models\Traceability;
 use Illuminate\Http\Request;
 use App\Http\Resources\TraceabilityResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
+
+#[Group('Traceability')]
 
 class TraceabilityApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * Gets the entire list of traceabilities
+     * @response AnonymousResourceCollection<TraceabilityResource>
      */
     public function index()
     {
@@ -22,7 +27,9 @@ class TraceabilityApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create traceability in the database.
+     * @param StoreTraceabilityRequest $request
      */
     public function store(StoreTraceabilityRequest $request)
     {
@@ -34,7 +41,9 @@ class TraceabilityApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * Displays a traceability by its id
+     * @param Traceability $traceability The resolved traceability instance.
      */
     public function show(Traceability $traceability)
     {
@@ -44,7 +53,10 @@ class TraceabilityApiController extends Controller
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdateTraceabilityRequest $request
+     * @param Traceability $traceability The resolved traceability instance.
      */
     public function update(UpdateTraceabilityRequest $request, Traceability $traceability)
     {
@@ -56,7 +68,9 @@ class TraceabilityApiController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete
+     * Delete the specified resource from storage.
+     * @param Traceability $traceability The resolved traceability instance.
      */
     public function destroy(Traceability $traceability)
     {

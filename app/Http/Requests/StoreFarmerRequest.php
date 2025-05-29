@@ -44,4 +44,26 @@ class StoreFarmerRequest extends FormRequest
             ],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es obligatorio.',
+            'name.string'   => 'El nombre debe ser un texto.',
+            'name.max'      => 'El nombre no debe exceder los 255 caracteres.',
+
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.string'   => 'El correo electrónico debe ser un texto.',
+            'email.email'    => 'El correo electrónico debe ser una dirección válida.',
+            'email.max'      => 'El correo electrónico no debe exceder los 255 caracteres.',
+
+            'phone.required' => 'El número de teléfono es obligatorio.',
+            'phone.string'   => 'El número de teléfono debe ser un texto.',
+
+            'registration_date.required' => 'La fecha de registro es obligatoria.',
+            'registration_date.date'     => 'La fecha de registro debe ser una fecha válida.',
+            'registration_date.before_or_equal' => 'La fecha de registro no puede ser posterior al día de hoy.',
+        ];
+    }
+
 }

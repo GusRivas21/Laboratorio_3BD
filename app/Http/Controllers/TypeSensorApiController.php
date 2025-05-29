@@ -8,11 +8,16 @@ use App\Models\TypeSensor;
 use Illuminate\Http\Request;
 use App\Http\Resources\TypeSensorResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
+
+#[Group('TypeSensor')]
 
 class TypeSensorApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * Gets the entire list of type sensors
+     * @response AnonymousResourceCollection<TypeSensorResource>
      */
     public function index()
     {
@@ -26,7 +31,9 @@ class TypeSensorApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create type sensor in the database.
+     * @param StoreTypeSensorRequest $request
      */
     public function store(StoreTypeSensorRequest $request)
     {
@@ -38,7 +45,10 @@ class TypeSensorApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * Displays a type sensor by its id
+     * @param TypeSensor $typeSensor The resolved type sensor instance.
+     *
      */
     public function show(TypeSensor $typeSensor)
     {
@@ -48,7 +58,10 @@ class TypeSensorApiController extends Controller
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdateTypeSensorRequest $request
+     * @param TypeSensor $typeSensor The resolved type sensor instance.
      */
     public function update(UpdateTypeSensorRequest $request, TypeSensor $typeSensor)
     {
@@ -60,7 +73,10 @@ class TypeSensorApiController extends Controller
     }
 
     /**
+     * Delete
      * Remove the specified resource from storage.
+     * @param TypeSensor $typeSensor The resolved type sensor instance.
+     * 
      */
     public function destroy(TypeSensor $typeSensor)
     {

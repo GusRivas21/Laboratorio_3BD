@@ -8,11 +8,15 @@ use App\Models\SupplyManagement;
 use Illuminate\Http\Request;
 use App\Http\Resources\SupplyManagementResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
 
+#[Group('Supply Management')]
 class SupplyManagementApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * Gets the entire list of supply management records
+     * @response AnonymousResourceCollection<SupplyManagementResource>
      */
     public function index()
     {
@@ -22,7 +26,9 @@ class SupplyManagementApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create supply management record in the database.
+     * @param StoreSupplyManagementRequest $request
      */
     public function store(StoreSupplyManagementRequest $request)
     {
@@ -34,7 +40,9 @@ class SupplyManagementApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * Displays a supply management record by its id
+     * @param SupplyManagement $supplyManagement The resolved supply management instance.
      */
     public function show(SupplyManagement $supplyManagement)
     {
@@ -44,7 +52,10 @@ class SupplyManagementApiController extends Controller
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdateSupplyManagementRequest $request
+     * @param SupplyManagement $supplyManagement The resolved supply management instance.
      */
     public function update(UpdateSupplyManagementRequest $request, SupplyManagement $supplyManagement)
     {
@@ -56,7 +67,9 @@ class SupplyManagementApiController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete
+     * Delete the specified resource from storage.
+     * @param SupplyManagement $supplyManagement The resolved supply management instance.
      */
     public function destroy(SupplyManagement $supplyManagement)
     {

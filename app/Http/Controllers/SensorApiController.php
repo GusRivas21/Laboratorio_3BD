@@ -8,11 +8,16 @@ use App\Models\Sensor;
 use Illuminate\Http\Request;
 use App\Http\Resources\SensorResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
+
+#[Group('Sessors')]
 
 class SensorApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * Gets the entire list of sensors
+     * @response AnonymousResourceCollection<SensorResource>
      */
     public function index()
     {
@@ -22,7 +27,9 @@ class SensorApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create sensor in the database.
+     * @param StoreSensorRequest $request
      */
     public function store(StoreSensorRequest $request)
     {
@@ -34,7 +41,10 @@ class SensorApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * Displays a sensor by its id
+     * @param Sensor $sensor The resolved sensor instance.
+     *
      */
     public function show(Sensor $sensor)
     {
@@ -44,7 +54,10 @@ class SensorApiController extends Controller
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdateSensorRequest $request
+     * @param Sensor $sensor The resolved sensor instance.
      */
     public function update(UpdateSensorRequest $request, Sensor $sensor)
     {
@@ -56,7 +69,9 @@ class SensorApiController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete
+     * Delete the specified resource from storage.
+     * @param Sensor $sensor The resolved sensor instance.
      */
     public function destroy(Sensor $sensor)
     {

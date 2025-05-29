@@ -8,11 +8,16 @@ use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Http\Resources\WorkerResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
+
+#[Group('Worker')]
 
 class WorkerApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * Gets the entire list of workers
+     * @response AnonymousResourceCollection<WorkerResource>
      */
     public function index()
     {
@@ -22,7 +27,9 @@ class WorkerApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create worker in the database.
+     * @param StoreWorkerRequest $request
      */
     public function store(StoreWorkerRequest $request)
     {
@@ -35,7 +42,9 @@ class WorkerApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * Displays a worker by its id
+     * @param Worker $worker The resolved worker instance.
      */
     public function show(Worker $worker)
     {
@@ -45,7 +54,10 @@ class WorkerApiController extends Controller
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdateWorkerRequest $request
+     * @param Worker $worker The resolved worker instance.
      */
     public function update(UpdateWorkerRequest $request, Worker $worker)
     {
@@ -57,7 +69,9 @@ class WorkerApiController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete
+     * Delete the specified resource from storage.
+     * @param Worker $worker The resolved worker instance.
      */
     public function destroy(Worker $worker)
     {
