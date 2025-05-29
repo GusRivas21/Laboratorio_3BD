@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSupplyManagementRequest;
+use App\Http\Requests\UpdateSupplyManagementRequest;
 use App\Models\SupplyManagement;
 use Illuminate\Http\Request;
 use App\Http\Resources\SupplyManagementResource;
@@ -43,9 +44,13 @@ class SupplyManagementApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SupplyManagement $supplyManagement)
+    public function update(UpdateSupplyManagementRequest $request, SupplyManagement $supplyManagement)
     {
-        //
+        $supplyManagement->update($request->validated());
+
+        return (new SupplyManagementResource($supplyManagement))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -53,6 +58,10 @@ class SupplyManagementApiController extends Controller
      */
     public function destroy(SupplyManagement $supplyManagement)
     {
-        //
+    {
+        $supplyManagement->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
     }
 }

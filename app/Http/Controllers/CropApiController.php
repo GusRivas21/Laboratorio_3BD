@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCropRequest;
+use App\Http\Requests\UpdateCropRequest;
 use App\Models\Crop;
 use Illuminate\Http\Request;
 use App\Http\Resources\CropResource;
+use App\Http\Resources\PropertyResource;
 use Illuminate\Http\Response;
 
 class CropApiController extends Controller
@@ -43,9 +45,13 @@ class CropApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Crop $crop)
+    public function update(UpdateCropRequest $request, Crop $crop)
     {
-        //
+        $crop->update($request->validated());
+
+        return (new PropertyResource($crop))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -53,6 +59,10 @@ class CropApiController extends Controller
      */
     public function destroy(Crop $crop)
     {
-        //
+    {
+        $crop->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
     }
 }

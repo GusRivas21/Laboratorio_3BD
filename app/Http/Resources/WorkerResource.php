@@ -15,6 +15,7 @@ class WorkerResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'assigned_area' => $this->assigned_area,
             'training_level' => $this->training_level,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreWorkerRequest;
+use App\Http\Requests\UpdateWorkerRequest;
 use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Http\Resources\WorkerResource;
@@ -44,9 +45,13 @@ class WorkerApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Worker $worker)
+    public function update(UpdateWorkerRequest $request, Worker $worker)
     {
-        //
+        $worker->update($request->validated());
+
+        return (new WorkerResource($worker))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -54,6 +59,10 @@ class WorkerApiController extends Controller
      */
     public function destroy(Worker $worker)
     {
-        //
+    {
+        $worker->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
     }
 }

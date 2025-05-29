@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePredictiveAnalysisRequest;
+use App\Http\Requests\UpdatePredictiveAnalysisRequest;
 use App\Models\Crop;
 use App\Models\PredictiveAnalysis;
 use Illuminate\Http\Request;
@@ -44,9 +45,13 @@ class PredictiveAnalysisApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PredictiveAnalysis $predictiveAnalysis)
+    public function update(UpdatePredictiveAnalysisRequest $request, PredictiveAnalysis $predictiveAnalysis)
     {
-        //
+        $predictiveAnalysis->update($request->validated());
+
+        return (new PredictiveAnalysisResource($predictiveAnalysis))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -54,6 +59,10 @@ class PredictiveAnalysisApiController extends Controller
      */
     public function destroy(PredictiveAnalysis $predictiveAnalysis)
     {
-        //
+    {
+        $predictiveAnalysis->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePropertyRequest extends FormRequest
+class UpdateSupplyManagementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,39 +22,33 @@ class StorePropertyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'geographic_location' => [
+            'type' => [
+                'required',
+                'string'
+            ],
+            'name' => [
                 'required',
                 'string',
-                'max:255',
+                'max:255'
             ],
-            'total_area' => [
+            'application_date' => [
+                'required',
+                'date'
+            ],
+            'quantity_used' => [
                 'required',
                 'numeric',
-                'min:0.01',
+                'min:0'
             ],
-            'soil_type' => [
+            'observed_effectiveness' => [
                 'required',
                 'string',
-                'max:100',
+                'max:255'
             ],
-            'prevailing_climate' => [
+            'crop_id' => [
                 'required',
-                'string',
-                'max:100',
-            ],
-            'water_sources' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
-            'organic_certification' => [
-                'required',
-                'boolean',
-            ],
-            'farmer_id' => [
-                'required',
-                'exists:farmers,_id',
-            ],
+                'exists:crops,id'
+            ]
         ];
     }
 }

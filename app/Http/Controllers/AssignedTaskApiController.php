@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAssignedTaskRequest;
+use App\Http\Requests\UpdateAssignedTaskRequest;
 use App\Models\AssignedTask;
 use Illuminate\Http\Request;
 use App\Http\Resources\AssignedTaskResource;
@@ -43,9 +44,13 @@ class AssignedTaskApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AssignedTask $assignedTask)
+    public function update(UpdateAssignedTaskRequest $request, AssignedTask $assignedTask)
     {
-        //
+        $assignedTask->update($request->validated());
+
+        return (new AssignedTaskResource($assignedTask))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -53,6 +58,10 @@ class AssignedTaskApiController extends Controller
      */
     public function destroy(AssignedTask $assignedTask)
     {
-        //
+    {
+        $assignedTask->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
     }
 }
