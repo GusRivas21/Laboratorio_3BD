@@ -8,11 +8,16 @@ use App\Models\IrrigationSystem;
 use Illuminate\Http\Request;
 use App\Http\Resources\IrrigationSystemResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
+
+#[Group('Irrigation System')]
 
 class IrrigationSystemApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * Gets the entire list of irrigation systems
+     * @response AnonymousResourceCollection<IrrigationSystemResource>
      */
     public function index()
     {
@@ -22,7 +27,9 @@ class IrrigationSystemApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create irrigation system in the database.
+     * @param StoreIrrigationSystemRequest $request
      */
     public function store(StoreIrrigationSystemRequest $request)
     {
@@ -34,15 +41,22 @@ class IrrigationSystemApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * Displays an irrigation system by its id
+     * @param IrrigationSystem $irrigationSystem The resolved irrigation system instance.
      */
     public function show(IrrigationSystem $irrigationSystem)
     {
-        //
+         return (new IrrigationSystemResource($irrigationSystem))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdateIrrigationSystemRequest $request
+     * @param IrrigationSystem $irrigationSystem The resolved irrigation system instance.
      */
     public function update(UpdateIrrigationSystemRequest $request, IrrigationSystem $irrigationSystem)
     {

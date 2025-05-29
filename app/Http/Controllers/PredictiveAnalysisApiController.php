@@ -9,11 +9,16 @@ use App\Models\PredictiveAnalysis;
 use Illuminate\Http\Request;
 use App\Http\Resources\PredictiveAnalysisResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
+
+#[Group('Predictive Analysis')]
 
 class PredictiveAnalysisApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * Gets the entire list of predictive analyses
+     * @response AnonymousResourceCollection<PredictiveAnalysisResource>
      */
     public function index()
     {
@@ -23,7 +28,10 @@ class PredictiveAnalysisApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create predictive analysis in the database.
+     * @param StorePredictiveAnalysisRequest $request
+     *
      */
     public function store(StorePredictiveAnalysisRequest $request)
     {
@@ -35,15 +43,23 @@ class PredictiveAnalysisApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * Displays a predictive analysis by its id
+     * @param PredictiveAnalysis $predictiveAnalysis The resolved predictive analysis instance.
+     *
      */
     public function show(PredictiveAnalysis $predictiveAnalysis)
     {
-        //
+         return (new PredictiveAnalysisResource($predictiveAnalysis))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdatePredictiveAnalysisRequest $request
+     * @param PredictiveAnalysis $predictiveAnalysis The resolved predictive analysis instance.
      */
     public function update(UpdatePredictiveAnalysisRequest $request, PredictiveAnalysis $predictiveAnalysis)
     {
@@ -55,7 +71,9 @@ class PredictiveAnalysisApiController extends Controller
     }
 
     /**
+     * Delete
      * Remove the specified resource from storage.
+     * @param PredictiveAnalysis $predictiveAnalysis The resolved predictive analysis instance.
      */
     public function destroy(PredictiveAnalysis $predictiveAnalysis)
     {

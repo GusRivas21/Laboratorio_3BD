@@ -13,7 +13,9 @@ use Illuminate\Http\Response;
 class PropertyApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     * Gets the entire list of properties
+     * @response AnonymousResourceCollection<PropertyResource>
      */
     public function index()
     {
@@ -23,7 +25,10 @@ class PropertyApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create property in the database.
+     * @param StorePropertyRequest $request
+     *
      */
     public function store(StorePropertyRequest $request)
     {
@@ -35,15 +40,22 @@ class PropertyApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     * Displays a property by its id
+     * @param Property $property The resolved property instance.
      */
     public function show(Property $property)
     {
-        //
+         return (new PropertyResource($property))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdatePropertyRequest $request
+     * @param Property $property The resolved property instance.
      */
     public function update(UpdatePropertyRequest $request, Property $property)
     {
@@ -55,7 +67,9 @@ class PropertyApiController extends Controller
     }
 
     /**
+     * Delete
      * Remove the specified resource from storage.
+     * @param Property $property The resolved property instance.
      */
     public function destroy(Property $property)
     {

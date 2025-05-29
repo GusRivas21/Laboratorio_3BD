@@ -16,7 +16,7 @@ class WorkerApiController extends Controller
      */
     public function index()
     {
-        return (WorkerResource::collection(Worker::all()))
+        return (WorkerResource::collection(Worker::query()->paginate(4)))
         ->response()
         ->setStatusCode(Response::HTTP_OK);
     }
@@ -31,7 +31,7 @@ class WorkerApiController extends Controller
         return (new WorkerResource($worker))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
-        
+
     }
 
     /**
@@ -39,7 +39,9 @@ class WorkerApiController extends Controller
      */
     public function show(Worker $worker)
     {
-        //
+        return (new WorkerResource($worker))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**

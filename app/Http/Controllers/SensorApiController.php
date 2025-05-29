@@ -38,7 +38,9 @@ class SensorApiController extends Controller
      */
     public function show(Sensor $sensor)
     {
-        //
+         return (new SensorResource($sensor))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**

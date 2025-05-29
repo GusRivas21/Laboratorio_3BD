@@ -38,7 +38,9 @@ class TraceabilityApiController extends Controller
      */
     public function show(Traceability $traceability)
     {
-        //
+         return (new TraceabilityResource($traceability))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**

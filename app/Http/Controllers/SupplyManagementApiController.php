@@ -38,7 +38,9 @@ class SupplyManagementApiController extends Controller
      */
     public function show(SupplyManagement $supplyManagement)
     {
-        //
+         return (new SupplyManagementResource($supplyManagement))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**

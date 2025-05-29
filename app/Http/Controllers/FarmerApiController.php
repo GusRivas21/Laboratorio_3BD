@@ -8,15 +8,21 @@ use App\Models\Farmer;
 use Illuminate\Http\Request;
 use App\Http\Resources\FarmerResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
+
+#[Group('Farmer')]
 
 class FarmerApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     *
+     * Gets the entire list of farmers
+     * @response AnonymousResourceCollection<FarmerResource>
      */
     public function index()
     {
-       $farmers = FarmerResource::collection(Farmer::all());
+       $farmers = FarmerResource::collection(Farmer::query()->paginate(4));
 
         return response()->json([
             'farmers' => $farmers
@@ -24,7 +30,9 @@ class FarmerApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     * Create farmer in the database.
+     * @param StoreFarmerRequest $request
      */
     public function store(StoreFarmerRequest $request)
     {
@@ -36,15 +44,24 @@ class FarmerApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show
+     *
+     * Displays a farmer by its id
+     * @param Farmer $farmer The resolved farmer instance.
+     *
      */
     public function show(Farmer $farmer)
     {
-        //
+         return (new FarmerResource($farmer))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
+     * Update
      * Update the specified resource in storage.
+     * @param UpdateFarmerRequest $request
+     * @param Farmer $farmer The resolved farmer instance.
      */
     public function update(UpdateFarmerRequest $request, Farmer $farmer)
     {
@@ -56,7 +73,9 @@ class FarmerApiController extends Controller
     }
 
     /**
+     * Delete
      * Remove the specified resource from storage.
+     * @param Farmer $farmer The resolved farmer instance.
      */
     public function destroy(Farmer $farmer)
     {

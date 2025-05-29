@@ -8,21 +8,33 @@ use App\Models\AssignedTask;
 use Illuminate\Http\Request;
 use App\Http\Resources\AssignedTaskResource;
 use Illuminate\Http\Response;
+use Dedoc\Scramble\Attributes\Group;
 
+
+#[Group('Assigned Tasks')]
 class AssignedTaskApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index
+     *
+     *Gets the entire list of assigned tasks
+     *
+     *@response AnonymousResourceCollection<AssignedTaskResource>
      */
     public function index()
     {
         return (AssignedTaskResource::collection(AssignedTask::with('worker', 'crop')->paginate(4)))
         ->response()
         ->setStatusCode(Response::HTTP_OK);
+
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store
+     *
+     * Create assigned task in the database.
+     * @param StoreAssignedTaskRequest $request
+     *
      */
     public function store(StoreAssignedTaskRequest $request)
     {
@@ -34,15 +46,24 @@ class AssignedTaskApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show.
+     *
+     * Displays a task assigned by its id
+     *
+     * @param AssignedTask $assignedTask The resolved assigned Task instance.
      */
     public function show(AssignedTask $assignedTask)
     {
-        //
+         return (new AssignedTaskResource($assignedTask))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update
+     *
+     * Updates the specified assigned task in storage for id.
+     * @param UpdateAssignedTaskRequest $request
      */
     public function update(UpdateAssignedTaskRequest $request, AssignedTask $assignedTask)
     {
@@ -54,7 +75,11 @@ class AssignedTaskApiController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete
+     *
+     * Deletes the specified assigned task from storage for id.
+     * @param AssignedTask $assignedTask The resolved assigned Task instance.
+     *
      */
     public function destroy(AssignedTask $assignedTask)
     {

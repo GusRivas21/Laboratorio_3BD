@@ -16,11 +16,13 @@ class TypeSensorApiController extends Controller
      */
     public function index()
     {
-       $typeSensor = TypeSensorResource::collection(TypeSensor::all());
+       $typeSensor = TypeSensorResource::collection(TypeSensor::query()->paginate(4))
+            ->response()
+            ->getData(true);
 
         return response()->json([
             'typeSensors' => $typeSensor
-        ]); 
+        ]);
     }
 
     /**
@@ -40,7 +42,9 @@ class TypeSensorApiController extends Controller
      */
     public function show(TypeSensor $typeSensor)
     {
-        //
+         return (new TypeSensorResource($typeSensor))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
