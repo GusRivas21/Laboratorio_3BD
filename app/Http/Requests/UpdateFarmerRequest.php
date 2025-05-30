@@ -19,26 +19,32 @@ class UpdateFarmerRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    public function prepareForValidation(): void
+    {
+        $this->merge([
+            'registration_date' => now()->toDateString()
+        ]);
+    }
     public function rules(): array
     {
         return [
             'name' => [
-                'required',
+
                 'string',
                 'max:255'
             ],
             'email' => [
-                'required',
+
                 'string',
                 'email',
                 'max:255'
             ],
             'phone' => [
-                'required',
+
                 'string'
             ],
             'registration_date' => [
-                'required',
+                
                 'date',
                 'before_or_equal:today'
             ],

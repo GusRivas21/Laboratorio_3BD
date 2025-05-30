@@ -15,6 +15,7 @@ class PropertyApiController extends Controller
 {
     /**
      * Index
+     *
      * Gets the entire list of properties
      * @response AnonymousResourceCollection<PropertyResource>
      */
@@ -27,6 +28,7 @@ class PropertyApiController extends Controller
 
     /**
      * Store
+     *
      * Create property in the database.
      * @param StorePropertyRequest $request
      *
@@ -42,6 +44,7 @@ class PropertyApiController extends Controller
 
     /**
      * Show
+     *
      * Displays a property by its id
      * @param Property $property The resolved property instance.
      */
@@ -54,6 +57,7 @@ class PropertyApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdatePropertyRequest $request
      * @param Property $property The resolved property instance.
@@ -69,6 +73,7 @@ class PropertyApiController extends Controller
 
     /**
      * Delete
+     * 
      * Remove the specified resource from storage.
      * @param Property $property The resolved property instance.
      */

@@ -16,6 +16,7 @@ class WorkerApiController extends Controller
 {
     /**
      * Index
+     * 
      * Gets the entire list of workers
      * @response AnonymousResourceCollection<WorkerResource>
      */
@@ -28,6 +29,7 @@ class WorkerApiController extends Controller
 
     /**
      * Store
+     *
      * Create worker in the database.
      * @param StoreWorkerRequest $request
      */
@@ -43,6 +45,7 @@ class WorkerApiController extends Controller
 
     /**
      * Show
+     *
      * Displays a worker by its id
      * @param Worker $worker The resolved worker instance.
      */
@@ -55,6 +58,7 @@ class WorkerApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdateWorkerRequest $request
      * @param Worker $worker The resolved worker instance.
@@ -69,7 +73,9 @@ class WorkerApiController extends Controller
     }
 
     /**
+     *
      * Delete
+     *
      * Delete the specified resource from storage.
      * @param Worker $worker The resolved worker instance.
      */

@@ -19,6 +19,14 @@ class StoreFarmerRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    public function prepareForValidation(): void
+    {
+        $this->merge([
+            'registration_date' => now()->toDateString()
+        ]);
+    }
+
+
     public function rules(): array
     {
         return [

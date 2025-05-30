@@ -31,6 +31,7 @@ class FarmerApiController extends Controller
 
     /**
      * Store
+     *
      * Create farmer in the database.
      * @param StoreFarmerRequest $request
      */
@@ -59,6 +60,7 @@ class FarmerApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdateFarmerRequest $request
      * @param Farmer $farmer The resolved farmer instance.
@@ -74,6 +76,7 @@ class FarmerApiController extends Controller
 
     /**
      * Delete
+     * 
      * Remove the specified resource from storage.
      * @param Farmer $farmer The resolved farmer instance.
      */

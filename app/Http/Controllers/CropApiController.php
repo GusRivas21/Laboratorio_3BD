@@ -74,6 +74,7 @@ class CropApiController extends Controller
 
     /**
      *Delete
+     *
      * Removes the specified crop from storage.
      * @param Crop $crop The resolved crop instance.
      */

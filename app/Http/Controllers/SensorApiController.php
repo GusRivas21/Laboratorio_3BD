@@ -16,6 +16,7 @@ class SensorApiController extends Controller
 {
     /**
      * Index
+     *
      * Gets the entire list of sensors
      * @response AnonymousResourceCollection<SensorResource>
      */
@@ -28,6 +29,7 @@ class SensorApiController extends Controller
 
     /**
      * Store
+     *
      * Create sensor in the database.
      * @param StoreSensorRequest $request
      */
@@ -42,6 +44,7 @@ class SensorApiController extends Controller
 
     /**
      * Show
+     *
      * Displays a sensor by its id
      * @param Sensor $sensor The resolved sensor instance.
      *
@@ -55,6 +58,7 @@ class SensorApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdateSensorRequest $request
      * @param Sensor $sensor The resolved sensor instance.
@@ -70,6 +74,7 @@ class SensorApiController extends Controller
 
     /**
      * Delete
+     * 
      * Delete the specified resource from storage.
      * @param Sensor $sensor The resolved sensor instance.
      */

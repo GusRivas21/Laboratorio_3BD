@@ -16,6 +16,7 @@ class IrrigationSystemApiController extends Controller
 {
     /**
      * Index
+     *
      * Gets the entire list of irrigation systems
      * @response AnonymousResourceCollection<IrrigationSystemResource>
      */
@@ -28,6 +29,7 @@ class IrrigationSystemApiController extends Controller
 
     /**
      * Store
+     *
      * Create irrigation system in the database.
      * @param StoreIrrigationSystemRequest $request
      */
@@ -42,6 +44,7 @@ class IrrigationSystemApiController extends Controller
 
     /**
      * Show
+     *
      * Displays an irrigation system by its id
      * @param IrrigationSystem $irrigationSystem The resolved irrigation system instance.
      */
@@ -54,6 +57,7 @@ class IrrigationSystemApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdateIrrigationSystemRequest $request
      * @param IrrigationSystem $irrigationSystem The resolved irrigation system instance.
@@ -68,7 +72,10 @@ class IrrigationSystemApiController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     *  Delete
+     *
+     * Deletes the specified irrigation system from storage.
+     * @param IrrigationSystem $irrigationSystem The resolved irrigation system instance.
      */
     public function destroy(IrrigationSystem $irrigationSystem)
     {

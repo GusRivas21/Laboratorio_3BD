@@ -23,12 +23,10 @@ class UpdateTypeSensorRequest extends FormRequest
     {
         return [
             'sensor_type' => [
-                'required',
                 'string',
                 'max:50',
             ],
             'brand' => [
-                'required',
                 'string',
                 'max:50',
             ],
@@ -38,11 +36,9 @@ class UpdateTypeSensorRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'sensor_type.required' => 'El tipo de sensor es obligatorio.',
             'sensor_type.string' => 'El tipo de sensor debe ser una cadena de texto.',
             'sensor_type.max' => 'El tipo de sensor no debe exceder 50 caracteres.',
 
-            'brand.required' => 'La marca es obligatoria.',
             'brand.string' => 'La marca debe ser una cadena de texto.',
             'brand.max' => 'La marca no debe exceder 50 caracteres.',
         ];

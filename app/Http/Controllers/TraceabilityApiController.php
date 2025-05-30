@@ -16,6 +16,7 @@ class TraceabilityApiController extends Controller
 {
     /**
      * Index
+     *
      * Gets the entire list of traceabilities
      * @response AnonymousResourceCollection<TraceabilityResource>
      */
@@ -28,6 +29,7 @@ class TraceabilityApiController extends Controller
 
     /**
      * Store
+     *
      * Create traceability in the database.
      * @param StoreTraceabilityRequest $request
      */
@@ -42,6 +44,7 @@ class TraceabilityApiController extends Controller
 
     /**
      * Show
+     *
      * Displays a traceability by its id
      * @param Traceability $traceability The resolved traceability instance.
      */
@@ -54,6 +57,7 @@ class TraceabilityApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdateTraceabilityRequest $request
      * @param Traceability $traceability The resolved traceability instance.
@@ -69,6 +73,7 @@ class TraceabilityApiController extends Controller
 
     /**
      * Delete
+     * 
      * Delete the specified resource from storage.
      * @param Traceability $traceability The resolved traceability instance.
      */

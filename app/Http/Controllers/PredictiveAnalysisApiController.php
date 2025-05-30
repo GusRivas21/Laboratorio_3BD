@@ -17,6 +17,7 @@ class PredictiveAnalysisApiController extends Controller
 {
     /**
      * Index
+     *
      * Gets the entire list of predictive analyses
      * @response AnonymousResourceCollection<PredictiveAnalysisResource>
      */
@@ -29,6 +30,7 @@ class PredictiveAnalysisApiController extends Controller
 
     /**
      * Store
+     *
      * Create predictive analysis in the database.
      * @param StorePredictiveAnalysisRequest $request
      *
@@ -44,6 +46,7 @@ class PredictiveAnalysisApiController extends Controller
 
     /**
      * Show
+     *
      * Displays a predictive analysis by its id
      * @param PredictiveAnalysis $predictiveAnalysis The resolved predictive analysis instance.
      *
@@ -57,6 +60,7 @@ class PredictiveAnalysisApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdatePredictiveAnalysisRequest $request
      * @param PredictiveAnalysis $predictiveAnalysis The resolved predictive analysis instance.
@@ -72,6 +76,7 @@ class PredictiveAnalysisApiController extends Controller
 
     /**
      * Delete
+     * 
      * Remove the specified resource from storage.
      * @param PredictiveAnalysis $predictiveAnalysis The resolved predictive analysis instance.
      */

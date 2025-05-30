@@ -16,6 +16,7 @@ class TypeSensorApiController extends Controller
 {
     /**
      * Index
+     *
      * Gets the entire list of type sensors
      * @response AnonymousResourceCollection<TypeSensorResource>
      */
@@ -32,6 +33,7 @@ class TypeSensorApiController extends Controller
 
     /**
      * Store
+     *
      * Create type sensor in the database.
      * @param StoreTypeSensorRequest $request
      */
@@ -46,6 +48,7 @@ class TypeSensorApiController extends Controller
 
     /**
      * Show
+     *
      * Displays a type sensor by its id
      * @param TypeSensor $typeSensor The resolved type sensor instance.
      *
@@ -59,6 +62,7 @@ class TypeSensorApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdateTypeSensorRequest $request
      * @param TypeSensor $typeSensor The resolved type sensor instance.
@@ -74,9 +78,10 @@ class TypeSensorApiController extends Controller
 
     /**
      * Delete
+     * 
      * Remove the specified resource from storage.
      * @param TypeSensor $typeSensor The resolved type sensor instance.
-     * 
+     *
      */
     public function destroy(TypeSensor $typeSensor)
     {

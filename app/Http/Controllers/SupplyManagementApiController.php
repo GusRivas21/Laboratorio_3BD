@@ -15,6 +15,7 @@ class SupplyManagementApiController extends Controller
 {
     /**
      * Index
+     *
      * Gets the entire list of supply management records
      * @response AnonymousResourceCollection<SupplyManagementResource>
      */
@@ -27,6 +28,7 @@ class SupplyManagementApiController extends Controller
 
     /**
      * Store
+     *
      * Create supply management record in the database.
      * @param StoreSupplyManagementRequest $request
      */
@@ -41,6 +43,7 @@ class SupplyManagementApiController extends Controller
 
     /**
      * Show
+     *
      * Displays a supply management record by its id
      * @param SupplyManagement $supplyManagement The resolved supply management instance.
      */
@@ -53,6 +56,7 @@ class SupplyManagementApiController extends Controller
 
     /**
      * Update
+     *
      * Update the specified resource in storage.
      * @param UpdateSupplyManagementRequest $request
      * @param SupplyManagement $supplyManagement The resolved supply management instance.
@@ -68,6 +72,7 @@ class SupplyManagementApiController extends Controller
 
     /**
      * Delete
+     * 
      * Delete the specified resource from storage.
      * @param SupplyManagement $supplyManagement The resolved supply management instance.
      */
