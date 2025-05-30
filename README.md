@@ -26,3 +26,25 @@ Este proyecto fue desarrollado utilizando **Laravel** y **MongoDB** como parte d
 ```bash
 git clone url_repositorio
 cd nombre_del_proyecto
+
+2️⃣ Configurar variables de entorno copiando el archivo .env.example y renombrándolo a .env. Luego, edita el archivo .env y configura las credenciales de tu base de datos:
+
+DB_CONNECTION=mongodb
+DB_HOST=127.0.0.1
+DB_PORT=27017
+DB_DATABASE=nombre_de_tu_base
+DB_USERNAME=
+DB_PASSWORD=
+
+3️⃣ Instalar dependencias con:
+
+composer install
+npm install
+
+4️⃣ Generar la clave de la aplicación ejecutando:
+
+php artisan key:generate
+
+5️⃣ Ejecutar migraciones con:
+
+php artisan migrate
