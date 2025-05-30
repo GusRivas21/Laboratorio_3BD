@@ -29,22 +29,22 @@ class UpdateFarmerRequest extends FormRequest
     {
         return [
             'name' => [
-
+                'required',
                 'string',
                 'max:255'
             ],
             'email' => [
-
+                'required',
                 'string',
                 'email',
                 'max:255'
             ],
             'phone' => [
-
+                'required',
                 'string'
             ],
             'registration_date' => [
-                
+                'required',
                 'date',
                 'before_or_equal:today'
             ],
